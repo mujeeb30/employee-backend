@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 @RestController
 @CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173"})
 @RequestMapping("/api/employees")
+
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -30,7 +31,12 @@ public class EmployeeController {
 
         return ResponseEntity.ok(employees);
     }
-
+@GetMapping("/health")
+    public ResponseEntity<String> health() {
+        return ResponseEntity.ok(
+            "Employee Backend is running - CI/CD deployed version 2"
+        );
+    }
     // GET EMPLOYEE BY ID
     @GetMapping("/{id}")
     public ResponseEntity<?> getEmployeeById(
